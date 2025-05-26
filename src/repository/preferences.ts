@@ -102,4 +102,12 @@ export class PreferencesRepository {
     return preferences;
   }
   
+  static async getPreferencesByGrade (grade: string) {
+    const preferences = await Preferences
+      .find({ grade })
+      .populate('userId', 'name email')
+      .exec();
+    return preferences;
+  }
+
 }
